@@ -1,8 +1,8 @@
-<?php 
-// Extract JSON FROM THE STRING FUNCRION
-$string =  '[{"name": "John Doe", "age" : 23},{"name": "Jane Doe", "age": 24}]';
+<?php
 
-// Regular Expression to Extract JSON from String.
+$string =  'This is a string data different from JSON, which needs to be removed.  JSON >> [{"name": "John Doe", "age" : 23},{"name": "Jane Doe", "age": 24}]'; //Simple Raw string with gibber values.
+
+// Pattern to Extract JSON from the Raw String.
 $pattern = '
 /
 \{              # { character
@@ -16,6 +16,16 @@ $pattern = '
 ';
 
 
-preg_match_all($pattern, $string, $matches);
+preg_match_all($pattern, $string, $matches); //Match the Given String to the JSON Format.
 
-print_r($matches[0]); //Dispay the Extracted JSON.
+$finalJson = $matches[0]; //Dispay the Extracted JSON*
+
+foreach($finalJson as $data)
+{
+	$values = json_decode($data, true); 
+	$outputarr[] = $values ;
+
+} 
+echo json_encode($outputarr); //Print the Output JSON Array on to the Screen.
+	
+# > *: Extracted JSON is converted to array of JSON String. Which is then converted to JSON array in Line 23
