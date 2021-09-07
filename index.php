@@ -1,5 +1,5 @@
 <?php 
-// Extract JSON FROM THE STRING FUNCRION
+// Extract JSON FROM THE STRING FUNCTION
 $string =  '[{"name": "John Doe", "age" : 23},{"name": "Jane Doe", "age": 24}]';
 
 // Regular Expression to Extract JSON from String.
